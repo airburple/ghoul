@@ -69,7 +69,10 @@ public class PauseScreen : MonoBehaviour {
 		hideButtons ();
 		p.canFly = true;
 		c.pause (false);
-		Time.timeScale = 1.0f;
+        if (GameModeControl.mode == 2)
+            Time.timeScale = 2.0f;
+        else
+            Time.timeScale = 1.0f;
 		gameplayUI.enabled = true;
 	}
 

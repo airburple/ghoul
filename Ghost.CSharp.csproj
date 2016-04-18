@@ -104,6 +104,7 @@
     <Compile Include="Assets\Scripts\PauseScreen.cs" />
     <Compile Include="Assets\Scripts\Posessable.cs" />
     <Compile Include="Assets\Scripts\Scare.cs" />
+    <Compile Include="Assets\Scripts\Steamwork.NET\SteamManager.cs" />
     <Compile Include="Assets\Scripts\WinScreen.cs" />
     <Compile Include="Assets\Scripts\ball.cs" />
     <Compile Include="Assets\Scripts\ballControl.cs" />
@@ -131,6 +132,7 @@
     <None Include="Assets\JMO Assets\Cartoon FX\CartoonFX Readme.txt" />
     <None Include="Assets\JMO Assets\Cartoon FX\Demo\Assets\CFX_Demo_WaterWiggle.shader" />
     <None Include="Assets\JMO Assets\Cartoon FX\Shaders\CFXM_MobileParticleAdd_Alpha8.shader" />
+    <None Include="Assets\Plugins\Steamworks.NET\redist\steam_appid.txt" />
     <None Include="Assets\Resources\GlowHidden.shader" />
     <None Include="Assets\Resources\GlowHiddenMobile.shader" />
     <None Include="Assets\Resources\GlowHiddenNormal.shader" />

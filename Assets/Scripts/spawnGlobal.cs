@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using Steamworks;
 
 public class spawnGlobal : MonoBehaviour {
 
@@ -394,6 +395,10 @@ public class spawnGlobal : MonoBehaviour {
     {
         score++;
         killedPatrons++;
+
+        SteamUserStats.SetAchievement("First Kill");
+        SteamUserStats.StoreStats();
+
         if (type == 0)
         {
             kidCount--;
@@ -559,6 +564,8 @@ public class spawnGlobal : MonoBehaviour {
     public void winFunction()
     {
         won = true;
+        SteamUserStats.SetAchievement("Beat The Game");
+        SteamUserStats.StoreStats();
         GameObject ui = GameObject.Find("UI");
         if(ui != null)
             ui.gameObject.SetActive(false);

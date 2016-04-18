@@ -29,7 +29,7 @@ public class Posessable : MonoBehaviour {
 		}
 
         //exit posession
-		if ((Input.GetButtonDown("B") ||Input.GetMouseButtonDown(1)) && posessed && (!stayIn || !this.gameObject.GetComponent<Scare>().scaring)){
+		if ((Input.GetButtonDown("B")) && posessed && (!stayIn || !this.gameObject.GetComponent<Scare>().scaring)){
 
             deposess();
 		

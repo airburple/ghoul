@@ -4,7 +4,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class tutorialScript : MonoBehaviour {
-    int tutCount;
+    public int tutCount;
     Sprite[] tutImages;
     Sprite[] cutImages;
     Image tutCurr;
@@ -53,9 +53,50 @@ public class tutorialScript : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        
+        //go forward
+        if ((Input.GetButtonDown("A") || Input.GetMouseButtonDown(0)) && !playing)
+        {
+            tutCount++;
+            backText.text = "Back";
+            changeImage(tutCount);
+            if (tutCount >= totalImages - 1)
+            {
+                //load scene
+                
+                GameObject[] go = GameObject.FindGameObjectsWithTag("HUD");
+                foreach (GameObject g in go)
+                    g.gameObject.SetActive(false);
+                SceneManager.LoadScene(1);
+            }
+            else
+            {
+                //load next image
+                
+
+                if (tutCount == totalImages - 2)
+                    nextText.text = "StartGame";
+            }
+        }
+
+        //go back
+        if ((Input.GetButtonDown("B") || Input.GetMouseButtonDown(1)) && !playing)
+        {
+            if (tutCount > 0)
+            {
+                tutCount--;
+                changeImage(tutCount);
+                nextText.text = "Next";
+                if (tutCount == 0)
+                    backText.text = "Main Menu";
+            }
+            else
+            {
+                //load start screne
+                SceneManager.LoadScene(0);
+            }
+        }
         //cutscene
-        if(playing)
+        if (playing)
         {
             backText.gameObject.SetActive(false);
             nextText.text = "Skip";
@@ -104,44 +145,7 @@ public class tutorialScript : MonoBehaviour {
                 GameObject.Find("ACut").SetActive(false);
             }
         }
-        //go forward
-        if ((Input.GetButtonDown("A") || Input.GetMouseButtonDown(0)) && !playing)
-        {
-            tutCount++;
-
-            if(tutCount >= totalImages-1)
-            {
-                //load scene
-                changeImage(tutCount);
-                SceneManager.LoadScene(1);
-            }
-            else
-            {
-                //load next image
-                changeImage(tutCount);
-
-                if (tutCount == totalImages - 2)
-                    nextText.text = "StartGame";
-            }
-        }
-
-            //go back
-        if ((Input.GetButtonDown("B") || Input.GetMouseButtonDown(1)) && !playing)
-        {
-            if (tutCount > 0)
-            {
-                tutCount--;
-                changeImage(tutCount);
-                nextText.text = "Next";
-                if (tutCount == 0)
-                    backText.text = "Main Menu";
-            }
-            else
-            {
-                //load start screne
-                SceneManager.LoadScene(0);
-            }
-        }
+        
 
     }
 

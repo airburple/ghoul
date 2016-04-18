@@ -44,7 +44,7 @@ public class posess : MonoBehaviour {
 					c.GetComponentInParent<shaderGlow>().lightOn();
 				}
 
-				if ((Input.GetButtonDown("A") || Input.GetMouseButtonDown(0)) && c.GetComponent<Posessable>() != null) { //detect posses button (Q)
+				if ((Input.GetButtonDown("A")) && c.GetComponent<Posessable>() != null) { //detect posses button (Q)
 
 					if (Camera.main.GetComponent<Cam>().visionOn) {//if vision on turn off
 						Camera.main.GetComponent<Cam>().turnOff();

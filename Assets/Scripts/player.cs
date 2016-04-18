@@ -93,17 +93,29 @@ public class player : MonoBehaviour {
 
             if(canFly)
             {
-                if (flyCon < 0 && transform.position.y < 17f && !dead)
+                //fly up
+                if ((flyCon < 0 || Input.GetMouseButton(0)) && transform.position.y < 17f && !dead)
                 {
-                    transform.position = new Vector3(transform.position.x,
-						transform.position.y - (flyCon * flySpeed),
+                    if (Input.GetMouseButton(0))
+                        transform.position = new Vector3(transform.position.x,
+                            transform.position.y + (flySpeed),
+                                                 transform.position.z);
+                    else
+                        transform.position = new Vector3(transform.position.x,
+                        transform.position.y - (flyCon * flySpeed),
                                              transform.position.z);
                     idleTimer = 0;
                 }
-                if (flyCon > 0 && transform.position.y > 12.32f && !dead)
+                //fly down
+                if ((flyCon > 0 || Input.GetMouseButton(1)) && transform.position.y > 12.32f && !dead)
                 {
+                    if(Input.GetMouseButton(1))
                     transform.position = new Vector3(transform.position.x,
-						transform.position.y - (flyCon * flySpeed),
+						transform.position.y - (flySpeed),
+                                             transform.position.z);
+                    else
+                        transform.position = new Vector3(transform.position.x,
+                        transform.position.y - (flyCon * flySpeed),
                                              transform.position.z);
                     idleTimer = 0;
                 }
@@ -111,19 +123,19 @@ public class player : MonoBehaviour {
 
             }
 
-            if((Dx > 0 || Input.GetButtonDown("KeyPower1")) && !dead)
+            if((Dx > 0 || Input.GetButtonDown("KeyPower3")) && !dead)
             {
                 //full room scare
                 if (spawn.canFullRoomScare())
                     spawn.fullRoomScare(roomLocation);
             }
-            if ((Dx < 0|| Input.GetButtonDown("KeyPower2")) && !dead)
+            if ((Dx < 0|| Input.GetButtonDown("KeyPower1")) && !dead)
             {
                 //stop time
                 if (spawn.canStopTime())
                     spawn.stopTimer();
             }
-            if ((Dy < 0 || Input.GetButtonDown("KeyPower3")) && !dead)
+            if ((Dy < 0 || Input.GetButtonDown("KeyPower2")) && !dead)
             {
                 //speed up
                 if (spawn.canSpeedUp())
@@ -132,8 +144,8 @@ public class player : MonoBehaviour {
             if ((Dy > 0 || Input.GetButtonDown("KeyPower4")) && !dead)
             {
                 //refill power ups
-                //spawn.refillPowers();
-                spawn.winFunction();
+                spawn.refillPowers();
+                //spawn.winFunction();
             }
 
 

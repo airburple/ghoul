@@ -134,7 +134,7 @@ public class NavAgent : MonoBehaviour {
             scaredTimer += Time.deltaTime;
             AnimatorStateInfo stateInfo = anim.GetCurrentAnimatorStateInfo(0);
             //persist scare animation to completion or hard cap it at 6 seconds
-            if (scaredTimer > stateInfo.length || scaredTimer > 6)
+            if (scaredTimer > stateInfo.length || scaredTimer > 4)
             {
                 
                 
